@@ -6,3 +6,6 @@ gunicorn
 matplotlib
 seaborn
 boto3
+requests
+nixtla
+python-dotenv

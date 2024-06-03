@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px 
 import plotly.graph_objects as go
 import numpy as np
+import requests
 
 ### Config
 st.set_page_config(
@@ -10,6 +11,28 @@ st.set_page_config(
     page_icon="💸 ",
     layout="wide"
 )
+
+with st.form('my_form'):
+  address = st.text_area('Enter a wallet address')
+  submitted = st.form_submit_button('Scan')
+  if len(address)<1:
+    print('ko')
+    st.warning('Address format must be a string!', icon='⚠')
+  else:
+    print(f'ok - {address}')
+    
+    url = f'https://walletscan-api-7f80b4b1818a.herokuapp.com/wallet-info/{f'"{address}"'}'
+    print('url', url)
+
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        wallet_info = response.json()
+        print('wallet_info',wallet_info)
+        st.info(wallet_info)
+    else:
+        print(f"Error: {response.status_code}")
+        st.warning(f"Error: {response.status_code}", icon='⚠')
 
 DATA_URL = ('https://full-stack-assets.s3.eu-west-3.amazonaws.com/Deployment/e-commerce_data.csv')
 

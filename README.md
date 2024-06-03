@@ -1,1 +1,1 @@
-# ethereum-profiles
+# Walletscan
