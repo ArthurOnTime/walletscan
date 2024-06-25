@@ -4,4 +4,4 @@ docker run -it \
     -e PORT=80 \
     -e NIXTLA_API_KEY=$NIXTLA_API_KEY \
     -p 4001:80 \
-    streamlit-app
+    7cd21adf15cf4a8db8912319df79bb53f650dff6cc29fc9a64b16cee53166bc3
